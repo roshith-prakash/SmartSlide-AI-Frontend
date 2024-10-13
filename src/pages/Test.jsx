@@ -11,7 +11,7 @@ const PPTGenerator = () => {
     try {
       setDisabled(true);
       const response = await axios.post(
-        "http://localhost:4000/api/v1/create-ppt",
+        "https://ppt-creator.onrender.com/api/v1/create-ppt",
         { topic },
         {
           responseType: "blob", // Important for handling binary data
