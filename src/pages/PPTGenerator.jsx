@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { axiosInstance } from "../utils/axios";
 
 const PPTGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -10,26 +10,37 @@ const PPTGenerator = () => {
   const handleGeneratePPT = async () => {
     try {
       setDisabled(true);
-      const response = await axios.post(
-        "https://ppt-creator.onrender.com/api/v1/create-ppt",
-        { topic },
+      const response = await axiosInstance.post(
+        "/create-ppt",
+        { topic, slides, points },
         {
           responseType: "blob", // Important for handling binary data
         }
       );
 
-      // Create a blob link to download the file
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "Presentation.pptx"); // Specify the file name
-      document.body.appendChild(link);
-      link.click();
-      link.remove(); // Remove the link after clicking
+      console.log(response);
+
+      if (response.status != 400) {
+        // Create a blob link to download the file
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "Presentation.pptx"); // Specify the file name
+        document.body.appendChild(link);
+        link.click();
+        link.remove(); // Remove the link after clicking
+      } else {
+        console.log("Cannot create PPT on provided topic");
+      }
 
       setDisabled(false);
     } catch (error) {
-      console.error("Error generating PPT:", error);
+      if (error.status == 400) {
+        console.log("Cannot create PPT on provided topic");
+      } else {
+        console.error("Error generating PPT:", error);
+      }
+
       setDisabled(false);
     }
   };
