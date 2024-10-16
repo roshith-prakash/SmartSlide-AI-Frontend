@@ -7,13 +7,14 @@ const PPTGenerator = () => {
   const [points, setPoints] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [includeChart, setIncludeChart] = useState(false);
+  const [includeTable, setIncludeTable] = useState(false);
 
   const handleGeneratePPT = async () => {
     try {
       setDisabled(true);
       const response = await axiosInstance.post(
         "/create-ppt",
-        { topic, slides, points, includeChart },
+        { topic, slides, points, includeChart, includeTable },
         {
           responseType: "blob", // Important for handling binary data
         }
@@ -96,6 +97,15 @@ const PPTGenerator = () => {
           onChange={(e) => setIncludeChart(e.target.checked)}
         />
         <label>Include Graphs</label>
+      </div>
+      <div className="flex items-center mx-3 gap-x-2 my-4">
+        <input
+          disabled={disabled}
+          type="checkbox"
+          className=" h-5 w-5"
+          onChange={(e) => setIncludeTable(e.target.checked)}
+        />
+        <label>Include Tables</label>
       </div>
       <button
         disabled={disabled}
