@@ -19,11 +19,15 @@ const PPTGenerator = () => {
         }
       );
 
-      console.log(response);
-
       if (response.status != 400) {
         // Create a blob link to download the file
-        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const url = window.URL.createObjectURL(
+          new Blob([response.data], {
+            type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          })
+        );
+
+        // Create link to download the ppt
         const link = document.createElement("a");
         link.href = url;
         link.setAttribute("download", "Presentation.pptx"); // Specify the file name
@@ -47,42 +51,60 @@ const PPTGenerator = () => {
   };
 
   return (
-    <div>
-      <h1 className="p-5">Generate PPT Presentation</h1>
-      <input
-        type="text"
-        value={topic}
-        className="border-2 border-black mx-3"
-        onChange={(e) => setTopic(e.target.value)}
-        placeholder="Enter presentation topic"
-      />
-      <input
-        type="number"
-        value={slides}
-        className="border-2 border-black mx-3"
-        onChange={(e) => setSlides(e.target.value)}
-        placeholder="Enter number of slides"
-      />
-      <input
-        type="number"
-        value={points}
-        className="border-2 border-black mx-3"
-        onChange={(e) => setPoints(e.target.value)}
-        placeholder="Enter number of points per slide"
-      />
-      <input
-        type="checkbox"
-        className="mx-1"
-        onChange={(e) => setIncludeChart(e.target.checked)}
-      />
-      <label>Include Graphs</label>
+    <div className="px-5">
+      <h1 className="px-3 py-8 text-3xl italic font-medium font-serif">
+        Generate PPT Presentation
+      </h1>
+      <div className="flex items-center mx-3 gap-x-2 my-4">
+        <label>Presentation Topic : </label>
+        <input
+          type="text"
+          value={topic}
+          disabled={disabled}
+          className="border-2 border-black mx-3 px-5 py-2 rounded  disabled:bg-gray-200"
+          onChange={(e) => setTopic(e.target.value)}
+          placeholder="Enter presentation topic"
+        />
+      </div>
+      <div className="flex items-center mx-3 gap-x-2 my-4">
+        <label>Number of Slides : </label>
+        <input
+          type="number"
+          value={slides}
+          disabled={disabled}
+          className="border-2 border-black mx-3 px-5 py-2 rounded disabled:bg-gray-200"
+          onChange={(e) => setSlides(e.target.value)}
+          placeholder="Enter number of slides"
+        />
+      </div>
+      <div className="flex items-center mx-3 gap-x-2 my-4">
+        <label>Number of Points : </label>
+        <input
+          type="number"
+          value={points}
+          disabled={disabled}
+          className="border-2 border-black mx-3 px-5 py-2 rounded  disabled:bg-gray-200"
+          onChange={(e) => setPoints(e.target.value)}
+          placeholder="Enter number of points per slide"
+        />
+      </div>
+      <div className="flex items-center mx-3 gap-x-2 my-4">
+        <input
+          disabled={disabled}
+          type="checkbox"
+          className=" h-5 w-5"
+          onChange={(e) => setIncludeChart(e.target.checked)}
+        />
+        <label>Include Graphs</label>
+      </div>
       <button
         disabled={disabled}
-        className="border-2 border-black mx-3"
+        className="border-2 border-black mx-3 my-5 px-5 py-2 rounded hover:scale-105 transition-all  disabled:bg-gray-200"
         onClick={handleGeneratePPT}
       >
-        Generate PPT
+        {disabled ? "Creating your PPT..." : "Generate PPT"}
       </button>
+      <br />
     </div>
   );
 };
