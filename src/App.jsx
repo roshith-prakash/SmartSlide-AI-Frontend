@@ -21,6 +21,7 @@ function App() {
       {isLoading && (
         <div className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
           <img
+            alt="Man giving a presentation"
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1728917400/file_oxldxw.png"
             className="w-72 pointer-events-none"
           />
