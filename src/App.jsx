@@ -16,7 +16,7 @@ function App() {
   });
 
   return (
-    <>
+    <div className="min-h-screen bg-wave bg-cover bg-no-repeat">
       {/* If server isn't ready for use, show a loading indicator */}
       {isLoading && (
         <div className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
@@ -64,7 +64,7 @@ function App() {
       )}
 
       {!isLoading && !error && <PPTGenerator />}
-    </>
+    </div>
   );
 }
 

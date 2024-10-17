@@ -5,7 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cta: "#689cd4"
+        cta: "#791dcc",
+        hovercta: "#7c0ea0"
+      },
+      backgroundImage: {
+        wave: "url('./assets/bg.svg')"
       }
     },
   },

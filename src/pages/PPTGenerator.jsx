@@ -76,107 +76,105 @@ const PPTGenerator = () => {
   };
 
   return (
-    <div className="px-5">
-      <h1 className="px-3 py-8 text-3xl italic font-medium font-serif">
-        Generate PPT Presentation
-      </h1>
-      {/* Insert Presentation topic */}
-      <div className="flex items-center mx-3 gap-x-2 my-4">
-        <label>Presentation Topic : </label>
-        <input
-          type="text"
-          value={topic}
-          disabled={disabled}
-          className="border-2 mx-3 px-5 py-2 rounded-lg  disabled:bg-gray-200"
-          onChange={(e) => setTopic(e.target.value)}
-          placeholder="Enter presentation topic"
-        />
-      </div>
-      {/* Select number of slides */}
-      <div className="flex items-center mx-3 gap-x-2 my-4">
-        <label>Number of Slides : </label>
-        <select
-          value={slides}
-          disabled={disabled}
-          className="w-full lg:w-40 border-2 rounded-lg p-1 text-center bg-transparent outline-none"
-          onChange={(e) => setSlides(e.target.value)}
-        >
-          {Array(10)
-            .fill(0)
-            .map((item, i) => {
-              return (
-                <option key={i} value={i + 1} selected={points == i + 1}>
-                  {i + 1}
-                </option>
-              );
-            })}
-        </select>
-      </div>
-      {/* Select number of points */}
-      <div className="flex items-center mx-3 gap-x-2 my-4">
-        <label>Number of Points : </label>
-        <select
-          value={points}
-          disabled={disabled}
-          className="w-full lg:w-40 border-b-2 p-1 text-center bg-transparent outline-none"
-          onChange={(e) => setPoints(e.target.value)}
-        >
-          <option selected={points == 1} value={1}>
-            1
-          </option>
-          <option selected={points == 2} value={2}>
-            2
-          </option>
-          <option selected={points == 3} value={3}>
-            3
-          </option>
-          <option selected={points == 4} value={4}>
-            4
-          </option>
-          <option selected={points == 5} value={5}>
-            5
-          </option>
-        </select>
-      </div>
-      {/* Checkbox for Graphs */}
-      <div className="flex items-center mx-3 gap-x-2 my-4">
-        <input
-          disabled={disabled}
-          type="checkbox"
-          className="h-5 w-5 cursor-pointer accent-cta"
-          onChange={(e) => setIncludeChart(e.target.checked)}
-        />
-        <label>Include Graphs</label>
-      </div>
-      {/* Checkbox for Tables */}
-      <div className="flex items-center mx-3 gap-x-2 my-4">
-        <input
-          disabled={disabled}
-          type="checkbox"
-          className=" h-5 w-5 cursor-pointer accent-cta"
-          onChange={(e) => setIncludeTable(e.target.checked)}
-        />
-        <label>Include Tables</label>
-      </div>
-      {/* Presentation Created */}
-      {presentationURL && (
-        <p className="mx-3 my-5">Your Presentation has been created!</p>
-      )}
-
-      {/* Buttons */}
-      <div className="flex gap-x-5">
-        <CTAButton
-          disabled={disabled}
-          onClick={handleGeneratePPT}
-          text={disabled ? "Creating your PPT..." : "Generate PPT"}
-        />
+    <div className="flex pb-10 h-full min-h-screen justify-center items-center">
+      <div className="px-5 py-10 flex flex-col gap-y-5 bg-white rounded shadow">
+        <h1 className="px-3 text-transparent bg-gradient-to-b from-cta to-hovercta bg-clip-text text-center text-3xl italic font-medium font-serif">
+          SmartSlide AI - Create Presentations in a Flash!
+        </h1>
+        {/* Insert Presentation topic */}
+        <div className="flex items-center mx-3 gap-x-2 my-4">
+          <label>Presentation Topic : </label>
+          <input
+            type="text"
+            value={topic}
+            disabled={disabled}
+            className="border-2 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
+            onChange={(e) => setTopic(e.target.value)}
+            placeholder="Enter presentation topic"
+          />
+        </div>
+        {/* Select number of slides */}
+        <div className="flex items-center mx-3 gap-x-2 my-4">
+          <label>Number of Slides : </label>
+          <select
+            value={slides}
+            disabled={disabled}
+            className="flex-1 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
+            onChange={(e) => setSlides(e.target.value)}
+          >
+            {Array(10)
+              .fill(0)
+              .map((item, i) => {
+                return (
+                  <option key={i} value={i + 1} selected={points == i + 1}>
+                    {i + 1}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+        {/* Select number of points */}
+        <div className="flex items-center mx-3 gap-x-2 my-4">
+          <label>Number of Points : </label>
+          <select
+            value={points}
+            disabled={disabled}
+            className="flex-1 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
+            onChange={(e) => setPoints(e.target.value)}
+          >
+            {Array(5)
+              .fill(0)
+              .map((item, i) => {
+                return (
+                  <option key={i} value={i + 1} selected={points == i + 1}>
+                    {i + 1}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+        <div className="flex py-5 justify-evenly">
+          {/* Checkbox for Graphs */}
+          <div className="flex items-center mx-3 gap-x-2 my-4">
+            <input
+              disabled={disabled}
+              type="checkbox"
+              className="h-5 w-5 cursor-pointer accent-cta"
+              onChange={(e) => setIncludeChart(e.target.checked)}
+            />
+            <label>Include Graphs</label>
+          </div>
+          {/* Checkbox for Tables */}
+          <div className="flex items-center mx-3 gap-x-2 my-4">
+            <input
+              disabled={disabled}
+              type="checkbox"
+              className=" h-5 w-5 cursor-pointer accent-cta"
+              onChange={(e) => setIncludeTable(e.target.checked)}
+            />
+            <label>Include Tables</label>
+          </div>
+        </div>
+        {/* Presentation Created */}
         {presentationURL && (
+          <p className="mx-3 my-5">Your Presentation has been created!</p>
+        )}
+
+        {/* Buttons */}
+        <div className="flex justify-center gap-x-5">
           <CTAButton
             disabled={disabled}
-            onClick={download}
-            text={"Download your Presentation!"}
+            onClick={handleGeneratePPT}
+            text={disabled ? "Creating your PPT..." : "Generate PPT"}
           />
-        )}
+          {presentationURL && (
+            <CTAButton
+              disabled={disabled}
+              onClick={download}
+              text={"Download your Presentation!"}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
