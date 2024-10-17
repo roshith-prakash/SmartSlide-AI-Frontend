@@ -4,7 +4,7 @@ import { SyncLoader } from "react-spinners";
 import { Typewriter } from "react-simple-typewriter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components";
-import { CreatePPT, Home } from "./pages";
+import { CreateDocument, CreatePPT, Home } from "./pages";
 
 function App() {
   // Check if server is active
@@ -74,6 +74,9 @@ function App() {
 
             {/* Presentation Generator */}
             <Route path="/create-ppt" element={<CreatePPT />} />
+
+            {/* Document Generator */}
+            <Route path="/create-word" element={<CreateDocument />} />
           </Routes>
         </BrowserRouter>
       )}

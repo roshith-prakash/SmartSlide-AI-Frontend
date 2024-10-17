@@ -29,6 +29,12 @@ const Navbar = () => {
         >
           Create Presentation
         </Link>
+        <Link
+          to="/create-word"
+          className="flex gap-x-3 items-center hover:text-cta transition-all"
+        >
+          Create Word Document
+        </Link>
       </div>
       {/* Hamburger button to open drawer */}
       <RxHamburgerMenu
@@ -87,6 +93,14 @@ const Navbar = () => {
               text={"Create Presentation"}
               onClick={() => {
                 navigate("/create-ppt");
+                setOpen(false);
+              }}
+              className="text-lg w-52"
+            />
+            <CTAButton
+              text={"Create Word Document"}
+              onClick={() => {
+                navigate("/create-word");
                 setOpen(false);
               }}
               className="text-lg w-52"

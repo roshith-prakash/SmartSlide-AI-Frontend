@@ -164,7 +164,9 @@ const PPTGenerator = () => {
           </div>
           {/* Presentation Created */}
           {presentationURL && (
-            <p className="mx-3 my-5">Your Presentation has been created!</p>
+            <p className="text-center mx-3 my-5">
+              Your Presentation has been created!
+            </p>
           )}
 
           {/* Buttons */}
