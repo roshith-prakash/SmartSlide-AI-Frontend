@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import PPTGenerator from "./pages/PPTGenerator";
 import { axiosInstance } from "./utils/axios";
 import { SyncLoader } from "react-spinners";
 import { Typewriter } from "react-simple-typewriter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navbar } from "./components";
+import { CreatePPT, Home } from "./pages";
 
 function App() {
   // Check if server is active
@@ -16,10 +18,10 @@ function App() {
   });
 
   return (
-    <div className="min-h-screen bg-wave bg-cover bg-no-repeat">
+    <div className="min-h-screen">
       {/* If server isn't ready for use, show a loading indicator */}
       {isLoading && (
-        <div className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
+        <main className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
           <img
             alt="Man giving a presentation"
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1728917400/file_oxldxw.png"
@@ -51,19 +53,30 @@ function App() {
               delaySpeed={1000}
             />
           </p>
-        </div>
+        </main>
       )}
 
       {error && (
-        <div className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
+        <main className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
           {/* Error text */}
           <p className="text-red-600 text-2xl">
             Cannot connect to server. Please try later.
           </p>
-        </div>
+        </main>
       )}
 
-      {!isLoading && !error && <PPTGenerator />}
+      {!isLoading && !error && (
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            {/* Home Page */}
+            <Route path="/" element={<Home />} />
+
+            {/* Presentation Generator */}
+            <Route path="/create-ppt" element={<CreatePPT />} />
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   );
 }

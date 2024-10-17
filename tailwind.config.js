@@ -9,7 +9,8 @@ module.exports = {
         hovercta: "#7c0ea0"
       },
       backgroundImage: {
-        wave: "url('./assets/bg.svg')"
+        wave: "url('https://res.cloudinary.com/do8rpl9l4/image/upload/v1729152471/bg_zgv44p.svg')",
+        wave2: "url('https://res.cloudinary.com/do8rpl9l4/image/upload/v1729160362/wave_lnx7xt.svg')"
       }
     },
   },
