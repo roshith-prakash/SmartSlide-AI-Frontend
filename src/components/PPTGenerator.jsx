@@ -10,9 +10,17 @@ const PPTGenerator = () => {
   const [includeChart, setIncludeChart] = useState(false);
   const [includeTable, setIncludeTable] = useState(false);
   const [presentationURL, setPresentationURL] = useState();
+  const [error, setError] = useState(0);
 
   // To create a Presentation according to the provided parameters
   const handleGeneratePPT = async () => {
+    setError(0);
+
+    if (!topic || topic?.length == 0) {
+      setError(1);
+      return;
+    }
+
     try {
       // Disabled all inputs
       setDisabled(true);
@@ -81,7 +89,7 @@ const PPTGenerator = () => {
         {/* Card */}
         <div className="max-w-[95%] px-5 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow">
           {/* Title */}
-          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-cta to-hovercta bg-clip-text text-center text-3xl font-medium">
+          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#bc3718] to-[#ff9777] bg-clip-text text-center text-3xl font-medium">
             SmartSlide AI -{" "}
             <span className="text-nowrap">
               Create Presentations in a Flash!
@@ -99,6 +107,11 @@ const PPTGenerator = () => {
               placeholder="Enter presentation topic"
             />
           </div>
+          {error == 1 && (
+            <p className="text-red-500 mx-3">
+              Please enter a topic for the document.
+            </p>
+          )}
           {/* Select number of slides */}
           <div className="flex items-center mx-3 gap-x-2 my-4">
             <label>Number of Slides : </label>
@@ -133,7 +146,7 @@ const PPTGenerator = () => {
                 .map((item, i) => {
                   return (
                     <option key={i} value={i + 1} selected={points == i + 1}>
-                      {i + 1} Point per Slide
+                      {i + 1} Point(s) per Slide
                     </option>
                   );
                 })}
@@ -146,7 +159,7 @@ const PPTGenerator = () => {
               <input
                 disabled={disabled}
                 type="checkbox"
-                className="h-5 w-5 cursor-pointer accent-cta"
+                className="h-5 w-5 cursor-pointer accent-[#b93927]"
                 onChange={(e) => setIncludeChart(e.target.checked)}
               />
               <label>Include Graphs</label>
@@ -156,7 +169,7 @@ const PPTGenerator = () => {
               <input
                 disabled={disabled}
                 type="checkbox"
-                className=" h-5 w-5 cursor-pointer accent-cta"
+                className=" h-5 w-5 cursor-pointer accent-[#b93927]"
                 onChange={(e) => setIncludeTable(e.target.checked)}
               />
               <label>Include Tables</label>
@@ -174,13 +187,19 @@ const PPTGenerator = () => {
             <CTAButton
               disabled={disabled}
               onClick={handleGeneratePPT}
-              text={disabled ? "Creating your PPT..." : "Generate PPT"}
+              text={
+                disabled
+                  ? "Creating your Presentation..."
+                  : "Generate Presentation"
+              }
+              color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
             />
             {presentationURL && (
               <CTAButton
                 disabled={disabled}
                 onClick={download}
                 text={"Download your Presentation!"}
+                color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
               />
             )}
           </div>

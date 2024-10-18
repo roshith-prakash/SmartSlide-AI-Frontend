@@ -7,9 +7,17 @@ const DocumentGenerator = () => {
   const [paragraphs, setParagraphs] = useState(1);
   const [disabled, setDisabled] = useState(false);
   const [documentURL, setDocumentURL] = useState();
+  const [error, setError] = useState(0);
 
   // To create a Word Document according to the provided parameters
   const handleGenerateDocument = async () => {
+    setError(0);
+
+    if (!topic || topic?.length == 0) {
+      setError(1);
+      return;
+    }
+
     try {
       // Disabled all inputs
       setDisabled(true);
@@ -78,7 +86,7 @@ const DocumentGenerator = () => {
         {/* Card */}
         <div className="max-w-[95%] px-5 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow">
           {/* Title */}
-          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-cta to-hovercta bg-clip-text text-center text-3xl font-medium">
+          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#113e8f] to-[#2463bf] bg-clip-text text-center text-3xl font-medium">
             SmartSlide AI -{" "}
             <span className="text-nowrap">
               Create Word Documents in a Flash!
@@ -93,9 +101,14 @@ const DocumentGenerator = () => {
               disabled={disabled}
               className="border-2 h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
               onChange={(e) => setTopic(e.target.value)}
-              placeholder="Enter presentation topic"
+              placeholder="Enter topic for the document"
             />
           </div>
+          {error == 1 && (
+            <p className="text-red-500 mx-3">
+              Please enter a topic for the document.
+            </p>
+          )}
           {/* Select number of slides */}
           <div className="flex items-center mx-3 gap-x-2 my-4">
             <label>Number of Paragraphs : </label>
@@ -138,12 +151,14 @@ const DocumentGenerator = () => {
                   ? "Creating your Document..."
                   : "Generate Word Document"
               }
+              color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
             />
             {documentURL && (
               <CTAButton
                 disabled={disabled}
                 onClick={download}
                 text={"Download your Document!"}
+                color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
               />
             )}
           </div>

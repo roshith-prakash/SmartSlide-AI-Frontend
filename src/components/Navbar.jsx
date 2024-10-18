@@ -18,20 +18,20 @@ const Navbar = () => {
           className="h-9 w-9"
           alt="SmartSlide AI"
         />
-        <span className="text-xl text-cta font-medium">SmartSlide AI</span>
+        <span className="text-xl text-cta font-semibold">SmartSlide AI</span>
       </Link>
       {/* Links on the right side */}
       <div className="hidden pr-10 md:flex items-center gap-x-10 font-medium">
         {/* To Presentation Page */}
         <Link
           to="/create-ppt"
-          className="flex gap-x-3 items-center hover:text-cta transition-all"
+          className="flex gap-x-3 items-center hover:text-[#b93927] transition-all"
         >
           Create Presentation
         </Link>
         <Link
           to="/create-word"
-          className="flex gap-x-3 items-center hover:text-cta transition-all"
+          className="flex gap-x-3 items-center hover:text-[#2463bf] transition-all"
         >
           Create Word Document
         </Link>
@@ -78,10 +78,10 @@ const Navbar = () => {
           {/* Logo */}
           <img
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-            className="w-40 pointer-events-none"
+            className="w-40 pointer-events-none animate-pulse"
           />
           {/* Title + subtitle */}
-          <p className="font-medium mt-8 text-hovercta w-[70%]">
+          <p className="font-medium mt-8 bg-gradient-to-br from-cta to-hovercta text-transparent bg-clip-text w-[70%]">
             SmartSlide AI -{" "}
             <span className="text-nowrap">
               Create Presentations in a Flash!

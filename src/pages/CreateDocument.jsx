@@ -2,7 +2,7 @@ import { DocumentGenerator } from "../components";
 
 const CreateDocument = () => {
   return (
-    <main className="bg-wave bg-cover bg-no-repeat">
+    <main className="bg-word bg-cover bg-no-repeat">
       <DocumentGenerator />
     </main>
   );
