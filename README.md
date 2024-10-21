@@ -3,12 +3,14 @@ Welcome to the SmartSlide-AI-Frontend repository! This is the frontend of the Sm
 
 ## Table of Contents
 
-Overview
-Features
-Tech Stack
-Setup
-Usage
-Visit the site
+<ul style="list-style-type:none">
+    <li>Overview</li>
+    <li>Features</li>
+    <li>Tech Stack</li>
+    <li>Setup</li>
+    <li>Usage</li>
+    <li>Visit the site</li>
+</ul>
 
 ## Overview
 
@@ -18,16 +20,21 @@ This repository contains the frontend code of the application, built with modern
 
 ## Features
 
-AI-Powered Slide Generation: Get slide content generated based on your topic input.
-Responsive Design: Works seamlessly across desktops, tablets, and mobile devices.
-Easy-to-Use Interface: A clean and intuitive UI for smooth user interaction.
+<ul style="list-style-type:none">
+    <li>AI-Powered Slide Generation: Get slide content generated based on your topic input.</li>
+    <li>Responsive Design: Works seamlessly across desktops, tablets, and mobile devices.</li>
+    <li>Easy-to-Use Interface: A clean and intuitive UI for smooth user interaction.</li>
+</ul>
+
 
 
 ## Tech Stack
 
-React: A JavaScript library for building user interfaces.
-Tailwind CSS: For styling and responsive design.
-Axios: For making API requests to the backend.
+<ul style="list-style-type:none">
+    <li>React: A JavaScript library for building user interfaces.</li>
+    <li>Tailwind CSS: For styling and responsive design.</li>
+    <li>Axios: For making API requests to the backend.</li>
+</il>
 
 ## Setup
 
@@ -53,10 +60,12 @@ The application should now be running on http://localhost:3000.
 
 ## Usage
 
-Open http://localhost:3000 in your web browser.
-Enter a topic for your presentation.
-Choose number of slides and points & click the "Generate" button.
-Download or save your presentation.
+<ul style="list-style-type:none">
+    <li>Open http://localhost:3000 in your web browser.</li>
+    <li>Enter a topic for your presentation.</li>
+    <li>Choose number of slides and points & click the "Generate" button.</li>
+    <li>Download or save your presentation.</li>
+</ul>
 
 ## Visit the site
 
