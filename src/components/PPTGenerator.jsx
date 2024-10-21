@@ -16,6 +16,7 @@ const PPTGenerator = () => {
   const handleGeneratePPT = async () => {
     setError(0);
 
+    // Topic not entered by user
     if (!topic || topic?.length == 0) {
       setError(1);
       return;
@@ -36,6 +37,7 @@ const PPTGenerator = () => {
         }
       );
 
+      // Presentation was created
       if (response.status != 400) {
         // Create a blob link to download the file
         const url = window.URL.createObjectURL(
@@ -54,7 +56,9 @@ const PPTGenerator = () => {
         document.body.appendChild(link);
         link.click();
         link.remove(); // Remove the link after clicking
-      } else {
+      }
+      // Presentation was not created
+      else {
         console.log("Cannot create PPT on provided topic");
       }
 
@@ -87,38 +91,42 @@ const PPTGenerator = () => {
     <>
       <div className="flex pb-10 h-full min-h-screen justify-center items-center">
         {/* Card */}
-        <div className="max-w-[95%] px-5 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow">
+        <div className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:translate-y-0 -translate-y-8 md:translate-y-0 border-2">
           {/* Title */}
-          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#bc3718] to-[#ff9777] bg-clip-text text-center text-3xl font-medium">
+          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#bc3718] to-[#ff9777] bg-clip-text text-center text-2xl md:text-3xl font-medium ">
             SmartSlide AI -{" "}
-            <span className="text-nowrap">
+            <span className="text-xl md:text-3xl text-nowrap">
               Create Presentations in a Flash!
             </span>
           </h1>
           {/* Insert Presentation topic */}
-          <div className="flex items-center mx-3 gap-x-2 my-4">
-            <label>Presentation Topic : </label>
+          <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
+            <label className="text-lg lg:text-base font-medium">
+              Presentation Topic :{" "}
+            </label>
             <input
               type="text"
               value={topic}
               disabled={disabled}
-              className="border-2 h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
+              className="border-2 h-10 flex-1 px-5 py-2 rounded-lg disabled:bg-gray-200"
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Enter presentation topic"
             />
           </div>
           {error == 1 && (
-            <p className="text-red-500 mx-3">
+            <p className="text-red-500">
               Please enter a topic for the document.
             </p>
           )}
           {/* Select number of slides */}
-          <div className="flex items-center mx-3 gap-x-2 my-4">
-            <label>Number of Slides : </label>
+          <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
+            <label className="text-lg lg:text-base font-medium">
+              Number of Slides :{" "}
+            </label>
             <select
               value={slides}
               disabled={disabled}
-              className="flex-1 h-10 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
+              className="flex-1 h-10 border-2 py-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
               onChange={(e) => setSlides(e.target.value)}
             >
               {Array(10)
@@ -133,8 +141,10 @@ const PPTGenerator = () => {
             </select>
           </div>
           {/* Select number of points */}
-          <div className="flex items-center mx-3 gap-x-2 my-4">
-            <label>Number of Points : </label>
+          <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
+            <label className="text-lg lg:text-base font-medium">
+              Number of Points :{" "}
+            </label>
             <select
               value={points}
               disabled={disabled}
@@ -153,7 +163,7 @@ const PPTGenerator = () => {
             </select>
           </div>
           {/* Checkboxes */}
-          <div className="flex py-5 justify-evenly">
+          <div className="flex flex-wrap text-lg lg:text-base font-medium py-5 justify-evenly">
             {/* Checkbox for Graphs */}
             <div className="flex items-center mx-3 gap-x-2 my-4">
               <input
@@ -183,7 +193,7 @@ const PPTGenerator = () => {
           )}
 
           {/* Buttons */}
-          <div className="flex justify-center gap-x-5">
+          <div className="flex justify-center py-5 gap-x-5">
             <CTAButton
               disabled={disabled}
               onClick={handleGeneratePPT}
@@ -193,6 +203,7 @@ const PPTGenerator = () => {
                   : "Generate Presentation"
               }
               color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
+              className={"text-xl md:text-lg lg:text-base"}
             />
             {presentationURL && (
               <CTAButton
@@ -200,6 +211,7 @@ const PPTGenerator = () => {
                 onClick={download}
                 text={"Download your Presentation!"}
                 color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
+                className={"text-xl md:text-lg lg:text-base"}
               />
             )}
           </div>

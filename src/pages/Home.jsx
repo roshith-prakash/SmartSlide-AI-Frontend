@@ -7,6 +7,7 @@ const Home = () => {
     <div
       className={`bg-wave font-poppins pb-10 bg-cover bg-no-repeat min-h-screen pt-10 px-5`}
     >
+      {/* AI Image */}
       <div className="flex justify-center items-center">
         <img
           src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"

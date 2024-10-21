@@ -13,6 +13,7 @@ const DocumentGenerator = () => {
   const handleGenerateDocument = async () => {
     setError(0);
 
+    // Topic not entered by user
     if (!topic || topic?.length == 0) {
       setError(1);
       return;
@@ -33,6 +34,7 @@ const DocumentGenerator = () => {
         }
       );
 
+      // If document was created
       if (response.status != 400) {
         // Create a blob link to download the file
         const url = window.URL.createObjectURL(
@@ -41,17 +43,19 @@ const DocumentGenerator = () => {
           })
         );
 
-        // Set URL to presentation
+        // Set URL to document
         setDocumentURL(url);
 
-        // Create link to download the ppt
+        // Create link to download the document
         const link = document.createElement("a");
         link.href = url;
         link.setAttribute("download", "Document.docx"); // Specify the file name
         document.body.appendChild(link);
         link.click();
         link.remove(); // Remove the link after clicking
-      } else {
+      }
+      // Document was not created
+      else {
         console.log("Cannot create document on provided topic");
       }
 
@@ -84,7 +88,7 @@ const DocumentGenerator = () => {
     <>
       <div className="flex pb-10 h-full min-h-screen justify-center items-center">
         {/* Card */}
-        <div className="max-w-[95%] px-5 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow">
+        <div className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:translate-y-0 -translate-y-8 md:translate-y-0 border-2">
           {/* Title */}
           <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#113e8f] to-[#2463bf] bg-clip-text text-center text-3xl font-medium">
             SmartSlide AI -{" "}
@@ -92,9 +96,11 @@ const DocumentGenerator = () => {
               Create Word Documents in a Flash!
             </span>
           </h1>
-          {/* Insert Presentation topic */}
-          <div className="flex items-center mx-3 gap-x-2 my-4">
-            <label>Document Topic : </label>
+          {/* Insert document topic */}
+          <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
+            <label className="text-lg lg:text-base font-medium">
+              Document Topic :
+            </label>
             <input
               type="text"
               value={topic}
@@ -105,13 +111,15 @@ const DocumentGenerator = () => {
             />
           </div>
           {error == 1 && (
-            <p className="text-red-500 mx-3">
+            <p className="text-red-500 ">
               Please enter a topic for the document.
             </p>
           )}
-          {/* Select number of slides */}
-          <div className="flex items-center mx-3 gap-x-2 my-4">
-            <label>Number of Paragraphs : </label>
+          {/* Select number of paragraphs */}
+          <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
+            <label className="text-lg lg:text-base font-medium">
+              Number of Paragraphs :{" "}
+            </label>
             <select
               value={paragraphs}
               disabled={disabled}
@@ -142,7 +150,7 @@ const DocumentGenerator = () => {
           )}
 
           {/* Buttons */}
-          <div className="flex justify-center gap-x-5">
+          <div className="flex justify-center py-5 gap-x-5">
             <CTAButton
               disabled={disabled}
               onClick={handleGenerateDocument}
@@ -152,6 +160,7 @@ const DocumentGenerator = () => {
                   : "Generate Word Document"
               }
               color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
+              className={"text-xl md:text-lg lg:text-base"}
             />
             {documentURL && (
               <CTAButton
@@ -159,6 +168,7 @@ const DocumentGenerator = () => {
                 onClick={download}
                 text={"Download your Document!"}
                 color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
+                className={"text-xl md:text-lg lg:text-base"}
               />
             )}
           </div>

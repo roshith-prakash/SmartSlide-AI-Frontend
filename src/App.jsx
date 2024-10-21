@@ -29,14 +29,14 @@ function App() {
           />
           {/* Three dots loading indicator */}
           <SyncLoader
-            color={"#3b82f6"}
+            color={"#791dcc"}
             loading={isLoading}
             size={40}
             aria-label="Loading Spinner"
             data-testid="loader"
           />
           {/* Typewriter effect to show 4 different texts. Gradient text */}
-          <p className="text-blue-500 text-xl">
+          <p className="text-cta text-xl">
             <Typewriter
               words={[
                 "Slides made easy—just click, and boom!",
