@@ -46,10 +46,10 @@ const Navbar = () => {
       <div
         className={`bg-wave2 bg-cover h-screen w-full text-xl md:text-lg fixed top-0 right-0 z-50 bg-white pb-6 text-center shadow-md ${
           open ? "translate-x-0" : "translate-x-[100%]"
-        } transition-all duration-500`}
+        } transition-all flex flex-col justify-between duration-500`}
       >
         {/* Top Section - Logo + Cross button */}
-        <div className="flex justify-between items-center pt-5 px-5 lg:px-10 mb-14">
+        <div className="flex justify-between items-center pt-5 px-5 lg:px-10 ">
           {/* Logo +Title */}
           <div
             onClick={() => {
@@ -74,7 +74,7 @@ const Navbar = () => {
           />
         </div>
         {/* Main Section */}
-        <div className="px-8 mt-14 text-2xl flex flex-col items-center gap-y-6">
+        <div className="px-8 text-2xl flex flex-col items-center gap-y-6">
           {/* Logo */}
           <img
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
@@ -107,6 +107,8 @@ const Navbar = () => {
             />
           </div>
         </div>
+        {/* Empty div so that justify works as required  */}
+        <div></div>
       </div>
     </div>
   );

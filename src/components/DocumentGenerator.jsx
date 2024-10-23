@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { axiosInstance } from "../utils/axios";
 import CTAButton from "./CTAButton";
+import toast from "react-hot-toast";
 
 const DocumentGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -57,6 +58,7 @@ const DocumentGenerator = () => {
       // Document was not created
       else {
         console.log("Cannot create document on provided topic");
+        toast.error("Cannot create a document on the provided topic.");
       }
 
       // Enable button
@@ -65,8 +67,10 @@ const DocumentGenerator = () => {
       // Errors
       if (error.status == 400) {
         console.log("Cannot create document on provided topic");
+        toast.error("Could not create a document on the provided topic.");
       } else {
-        console.error("Error generating Document:", error);
+        console.error("Error generating document:", error);
+        toast.error("OOPS! Something went wrong.");
       }
 
       // Enable button
@@ -90,9 +94,9 @@ const DocumentGenerator = () => {
         {/* Card */}
         <div className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:translate-y-0 -translate-y-8 md:translate-y-0 border-2">
           {/* Title */}
-          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#113e8f] to-[#2463bf] bg-clip-text text-center text-3xl font-medium">
+          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#113e8f] to-[#2463bf] bg-clip-text text-center text-2xl md:text-3xl font-medium">
             SmartSlide AI -{" "}
-            <span className="text-nowrap">
+            <span className="text-lg md:text-3xl text-nowrap">
               Create Word Documents in a Flash!
             </span>
           </h1>

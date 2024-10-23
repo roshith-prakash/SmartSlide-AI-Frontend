@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { axiosInstance } from "../utils/axios";
 import CTAButton from "./CTAButton";
+import toast from "react-hot-toast";
 
 const PPTGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -60,6 +61,7 @@ const PPTGenerator = () => {
       // Presentation was not created
       else {
         console.log("Cannot create PPT on provided topic");
+        toast.error("Cannot create a Presentation on the provided topic.");
       }
 
       // Enable button
@@ -68,8 +70,10 @@ const PPTGenerator = () => {
       // Errors
       if (error.status == 400) {
         console.log("Cannot create PPT on provided topic");
+        toast.error("Could not create a presentation on the provided topic.");
       } else {
         console.error("Error generating PPT:", error);
+        toast.error("OOPS! Something went wrong.");
       }
 
       // Enable button
@@ -95,7 +99,7 @@ const PPTGenerator = () => {
           {/* Title */}
           <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#bc3718] to-[#ff9777] bg-clip-text text-center text-2xl md:text-3xl font-medium ">
             SmartSlide AI -{" "}
-            <span className="text-xl md:text-3xl text-nowrap">
+            <span className="text-lg md:text-3xl text-nowrap">
               Create Presentations in a Flash!
             </span>
           </h1>

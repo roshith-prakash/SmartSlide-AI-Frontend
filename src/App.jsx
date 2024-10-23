@@ -5,6 +5,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components";
 import { CreateDocument, CreatePPT, Home } from "./pages";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   // Check if server is active
@@ -19,6 +20,8 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <Toaster />
+
       {/* If server isn't ready for use, show a loading indicator */}
       {isLoading && (
         <main className="h-screen w-full flex flex-col gap-y-10 justify-center items-center">
