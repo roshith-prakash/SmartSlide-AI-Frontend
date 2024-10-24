@@ -95,7 +95,10 @@ const PPTGenerator = () => {
     <>
       <div className="flex pb-10 h-full min-h-screen justify-center items-center">
         {/* Card */}
-        <div className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:translate-y-0 -translate-y-8 md:translate-y-0 border-2">
+        <div
+          data-aos="fade-up"
+          className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:-mt-0 -mt-8 md:-mt-0 border-2"
+        >
           {/* Title */}
           <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#bc3718] to-[#ff9777] bg-clip-text text-center text-2xl md:text-3xl font-medium ">
             SmartSlide AI -{" "}
@@ -197,7 +200,7 @@ const PPTGenerator = () => {
           )}
 
           {/* Buttons */}
-          <div className="flex justify-center py-5 gap-x-5">
+          <div className="flex flex-wrap gap-y-5 justify-center py-5 gap-x-5">
             <CTAButton
               disabled={disabled}
               onClick={handleGeneratePPT}
@@ -207,7 +210,7 @@ const PPTGenerator = () => {
                   : "Generate Presentation"
               }
               color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
-              className={"text-xl md:text-lg lg:text-base"}
+              className={":text-lg lg:text-base"}
             />
             {presentationURL && (
               <CTAButton
@@ -215,7 +218,7 @@ const PPTGenerator = () => {
                 onClick={download}
                 text={"Download your Presentation!"}
                 color={"bg-[#b93927] disabled:bg-[#b93927]/45"}
-                className={"text-xl md:text-lg lg:text-base"}
+                className={":text-lg lg:text-base"}
               />
             )}
           </div>
