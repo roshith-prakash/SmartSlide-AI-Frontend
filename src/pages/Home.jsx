@@ -11,7 +11,7 @@ const Home = () => {
       <div className="flex justify-center items-center">
         <img
           src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 rounded-full"
+          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 rounded-full spin-slow"
         />
       </div>
       {/* Title */}
@@ -24,14 +24,14 @@ const Home = () => {
         effortlessly. Simply input your content, and let AI do the magic!
       </p>
 
-      {/* Choose either FlashCards or MCQs  */}
+      {/* Choose either Presentation or Document  */}
       <p className="text-white drop-shadow-lg mt-10 text-xl font-semibold text-center">
         What should we create for you?
       </p>
 
       <div className="flex mt-10 justify-center gap-x-10 gap-y-10 flex-wrap">
         <CTAButton
-          text={"Create Presentations"}
+          text={"Create Presentation"}
           onClick={() => {
             navigate("/create-ppt");
           }}

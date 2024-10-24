@@ -78,7 +78,7 @@ const Navbar = () => {
           {/* Logo */}
           <img
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-            className="w-40 pointer-events-none animate-pulse"
+            className="w-40 pointer-events-none spin-slow"
           />
           {/* Title + subtitle */}
           <p className="font-medium mt-8 bg-gradient-to-br from-cta to-hovercta text-transparent bg-clip-text w-[70%]">
