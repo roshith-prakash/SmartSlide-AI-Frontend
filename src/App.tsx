@@ -6,9 +6,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components";
 import { CreateDocument, CreatePPT, Home } from "./pages";
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 function App() {
   // Check if server is active

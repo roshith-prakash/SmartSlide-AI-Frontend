@@ -10,7 +10,7 @@ const PPTGenerator = () => {
   const [disabled, setDisabled] = useState(false);
   const [includeChart, setIncludeChart] = useState(false);
   const [includeTable, setIncludeTable] = useState(false);
-  const [presentationURL, setPresentationURL] = useState();
+  const [presentationURL, setPresentationURL] = useState(null);
   const [error, setError] = useState(0);
 
   // To create a Presentation according to the provided parameters
@@ -27,7 +27,7 @@ const PPTGenerator = () => {
       // Disabled all inputs
       setDisabled(true);
       // Remove previous URL
-      setPresentationURL();
+      setPresentationURL(null);
 
       // Call API
       const response = await axiosInstance.post(
@@ -134,11 +134,11 @@ const PPTGenerator = () => {
               value={slides}
               disabled={disabled}
               className="flex-1 h-10 border-2 py-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
-              onChange={(e) => setSlides(e.target.value)}
+              onChange={(e) => setSlides(Number(e.target.value))}
             >
               {Array(10)
                 .fill(0)
-                .map((item, i) => {
+                .map((_, i) => {
                   return (
                     <option key={i} value={i + 1} selected={points == i + 1}>
                       {i + 1} Slide(s)
@@ -156,11 +156,11 @@ const PPTGenerator = () => {
               value={points}
               disabled={disabled}
               className="flex-1 h-10 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
-              onChange={(e) => setPoints(e.target.value)}
+              onChange={(e) => setPoints(Number(e.target.value))}
             >
               {Array(5)
                 .fill(0)
-                .map((item, i) => {
+                .map((_, i) => {
                   return (
                     <option key={i} value={i + 1} selected={points == i + 1}>
                       {i + 1} Point(s) per Slide

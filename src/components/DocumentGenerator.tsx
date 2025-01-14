@@ -7,7 +7,7 @@ const DocumentGenerator = () => {
   const [topic, setTopic] = useState("");
   const [paragraphs, setParagraphs] = useState(1);
   const [disabled, setDisabled] = useState(false);
-  const [documentURL, setDocumentURL] = useState();
+  const [documentURL, setDocumentURL] = useState<string | null>(null);
   const [error, setError] = useState(0);
 
   // To create a Word Document according to the provided parameters
@@ -24,7 +24,7 @@ const DocumentGenerator = () => {
       // Disabled all inputs
       setDisabled(true);
       // Remove previous URL
-      setDocumentURL();
+      setDocumentURL(null);
 
       // Call API
       const response = await axiosInstance.post(
@@ -131,7 +131,7 @@ const DocumentGenerator = () => {
               value={paragraphs}
               disabled={disabled}
               className="flex-1 h-10 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
-              onChange={(e) => setParagraphs(e.target.value)}
+              onChange={(e) => setParagraphs(Number(e.target.value))}
             >
               {Array(10)
                 .fill(0)

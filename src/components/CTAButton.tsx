@@ -1,6 +1,19 @@
 import PropTypes from "prop-types";
+import { MouseEventHandler } from "react";
 
-const CTAButton = ({ text, onClick, disabled, className, color }) => {
+const CTAButton = ({
+  text,
+  onClick,
+  disabled,
+  className,
+  color,
+}: {
+  text: string | React.ReactNode;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+  className?: string;
+  color?: string;
+}) => {
   return (
     <button
       disabled={disabled}
