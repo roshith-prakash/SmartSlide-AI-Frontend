@@ -1,10 +1,16 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import { PPTGenerator } from "../components";
 
 const CreatePPT = () => {
+  const { isDarkMode } = useDarkMode();
   return (
-    <main className="bg-ppt pt-10 lg:pt-5 bg-cover bg-no-repeat">
+    <div
+      className={`${
+        isDarkMode ? "bg-animatedWaveDark" : "bg-animatedWave"
+      }  font-poppins  bg-cover bg-no-repeat py-10 pb-32 px-5`}
+    >
       <PPTGenerator />
-    </main>
+    </div>
   );
 };
 

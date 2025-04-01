@@ -3,7 +3,7 @@ import { axiosInstance } from "./utils/axios";
 import { SyncLoader } from "react-spinners";
 import { Typewriter } from "react-simple-typewriter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 import { CreateDocument, CreatePPT, Home } from "./pages";
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
@@ -17,7 +17,7 @@ function App() {
     queryFn: () => {
       return axiosInstance.get("/");
     },
-    refetchInterval: 10000,
+    refetchInterval: 60000,
     retry: 5,
   });
 
@@ -29,7 +29,11 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div
+      className={`${
+        !isLoading && !error && "bg-hovercta/50"
+      } dark:bg-darkbg dark:text-darkmodetext`}
+    >
       <Toaster />
 
       {/* If server isn't ready for use, show a loading indicator */}
@@ -91,6 +95,7 @@ function App() {
             {/* Document Generator */}
             <Route path="/create-word" element={<CreateDocument />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       )}
     </div>

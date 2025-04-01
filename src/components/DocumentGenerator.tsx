@@ -2,6 +2,7 @@ import { useState } from "react";
 import { axiosInstance } from "../utils/axios";
 import CTAButton from "./CTAButton";
 import toast from "react-hot-toast";
+import Select from "./reuseit/Select";
 
 const DocumentGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -90,18 +91,16 @@ const DocumentGenerator = () => {
 
   return (
     <>
-      <div className="flex pb-10 h-full min-h-screen justify-center items-center">
+      <div className="flex h-full min-h-screen justify-center pb-48 items-center">
         {/* Card */}
         <div
           data-aos="fade-up"
-          className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white rounded-lg shadow max-[376px]:mt-0 -mt-8 md:mt-0 border-2"
+          className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white dark:bg-secondarydarkbg rounded-lg shadow border-2"
         >
           {/* Title */}
-          <h1 className="pb-8 px-3 text-transparent bg-gradient-to-b from-[#113e8f] to-[#2463bf] bg-clip-text text-center text-2xl md:text-3xl font-medium">
+          <h1 className="pb-8 px-3 flex justify-center items-center flex-wrap text-cta dark:text-darkmodeCTA text-center text-2xl md:text-3xl font-medium ">
             SmartSlide AI -{" "}
-            <span className="text-lg md:text-3xl text-nowrap">
-              Create Word Documents in a Flash!
-            </span>
+            <span className="text-nowrap">Create Documents in a Flash!</span>
           </h1>
           {/* Insert document topic */}
           <div className="flex flex-col gap-y-3 md:flex-row md:items-center gap-x-2 my-4">
@@ -112,7 +111,7 @@ const DocumentGenerator = () => {
               type="text"
               value={topic}
               disabled={disabled}
-              className="border-2 h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
+              className="border-2 bg-transparent h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Enter topic for the document"
             />
@@ -127,26 +126,22 @@ const DocumentGenerator = () => {
             <label className="text-lg lg:text-base font-medium">
               Number of Paragraphs :{" "}
             </label>
-            <select
-              value={paragraphs}
-              disabled={disabled}
-              className="flex-1 h-10 border-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
-              onChange={(e) => setParagraphs(Number(e.target.value))}
-            >
-              {Array(10)
-                .fill(0)
-                .map((item, i) => {
-                  return (
-                    <option
-                      key={i}
-                      value={i + 1}
-                      selected={paragraphs == i + 1}
-                    >
-                      {i + 1} Paragraph(s)
-                    </option>
-                  );
-                })}
-            </select>
+            <Select
+              options={[
+                { text: "1 Paragraph(s)", value: 1 },
+                { text: "2 Paragraph(s)", value: 2 },
+                { text: "3 Paragraph(s)", value: 3 },
+                { text: "4 Paragraph(s)", value: 4 },
+                { text: "5 Paragraph(s)", value: 5 },
+                { text: "6 Paragraph(s)", value: 6 },
+                { text: "7 Paragraph(s)", value: 7 },
+                { text: "8 Paragraph(s)", value: 8 },
+                { text: "9 Paragraph(s)", value: 9 },
+                { text: "10 Paragraph(s)", value: 10 },
+              ]}
+              className="flex-1 h-10 border-2 py-2 rounded-lg p-1 text-center bg-transparent outline-none cursor-pointer"
+              onChange={(e) => setParagraphs(Number(e))}
+            />
           </div>
 
           {/* Word Doc Created */}
@@ -166,7 +161,6 @@ const DocumentGenerator = () => {
                   ? "Creating your Document..."
                   : "Generate Word Document"
               }
-              color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
               className={"text-lg lg:text-base"}
             />
             {documentURL && (
@@ -174,7 +168,6 @@ const DocumentGenerator = () => {
                 disabled={disabled}
                 onClick={download}
                 text={"Download your Document!"}
-                color={"bg-[#2463bf] disabled:bg-[#2463bf]/45"}
                 className={"text-lg lg:text-base"}
               />
             )}

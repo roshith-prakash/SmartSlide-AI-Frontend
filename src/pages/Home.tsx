@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { CTAButton } from "../components";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { isDarkMode } = useDarkMode();
 
   return (
     <div
-      className={`bg-wave font-poppins pb-10 bg-cover bg-no-repeat min-h-screen pt-10 px-5`}
+      className={`${
+        isDarkMode ? "bg-animatedWaveDark" : "bg-animatedWave"
+      }  font-poppins  bg-cover bg-no-repeat py-20 pb-32 px-5`}
     >
       {/* AI Image */}
       <div data-aos="zoom-in" className="flex justify-center items-center">
         <img
           src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 rounded-full spin-slow"
+          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 dark:bg-opacity-100 rounded-full spin-slow"
         />
       </div>
       {/* Title */}

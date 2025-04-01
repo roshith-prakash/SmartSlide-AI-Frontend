@@ -1,12 +1,11 @@
-import PropTypes from "prop-types";
 import { MouseEventHandler } from "react";
 
 const CTAButton = ({
   text,
   onClick,
-  disabled,
+  disabled = false,
   className,
-  color,
+  color = "bg-cta disabled:bg-cta/45",
 }: {
   text: string | React.ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -23,20 +22,6 @@ const CTAButton = ({
       {text}
     </button>
   );
-};
-
-CTAButton.propTypes = {
-  text: PropTypes.string.isRequired, // Text to display on the button
-  onClick: PropTypes.func.isRequired, // Function to call on button click
-  disabled: PropTypes.bool, // Optional: Indicates if the button is disabled
-  className: PropTypes.string, // Optional: Additional class names
-  color: PropTypes.string, // Optional: Additional class names
-};
-
-CTAButton.defaultProps = {
-  disabled: false, // Default value for disabled
-  className: "", // Default value for className
-  color: "bg-cta disabled:bg-cta/45",
 };
 
 export default CTAButton;
