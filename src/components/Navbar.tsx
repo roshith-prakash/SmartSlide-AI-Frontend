@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* Pop out div - displayed when hamburger is clicked  */}
       <div
-        className={`bg-wave2 bg-cover h-screen w-full text-xl md:text-lg fixed top-0 right-0 z-50 bg-white pb-6 text-center shadow-md ${
+        className={`dark:bg-darkbg bg-animatedWave dark:bg-animatedWaveDark bg-cover h-screen w-full text-xl md:text-lg fixed top-0 right-0 z-50 bg-white pb-6 text-center shadow-md ${
           open ? "translate-x-0" : "translate-x-[100%]"
         } transition-all flex flex-col justify-between duration-500`}
       >
@@ -86,16 +86,16 @@ const Navbar = () => {
             <img
               src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
               alt="SmartSlide AI"
-              className="h-10 pointer-events-none"
+              className="h-10 pointer-events-none bg-white dark:bg-darkbg rounded-full p-1 border-2 border-hovercta"
             />
-            <p className="text-xl text-cta font-semibold  pr-2">
+            <p className="text-xl dark:text-darkmodeCTA text-white font-semibold  pr-2">
               SmartSlide AI
             </p>
           </div>
           {/* Close drawer */}
           <RxCross2
             onClick={() => setOpen(false)}
-            className="cursor-pointer text-2xl text-cta"
+            className="cursor-pointer text-2xl dark:text-darkmodeCTA text-white"
           />
         </div>
         {/* Main Section */}
@@ -103,7 +103,7 @@ const Navbar = () => {
           {/* Logo */}
           <img
             src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-            className="p-1 w-52 border-cta border-4 pointer-events-none bg-white bg-opacity-50 rounded-full spin-slow"
+            className="p-1 w-52 border-cta border-4 pointer-events-none bg-white bg-opacity-50 dark:bg-darkbg rounded-full spin-slow"
           />
           {/* Title + subtitle */}
           <p className="font-medium mt-8 bg-gradient-to-br from-cta to-hovercta text-transparent bg-clip-text w-[70%]">

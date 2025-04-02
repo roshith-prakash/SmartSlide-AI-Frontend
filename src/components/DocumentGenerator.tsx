@@ -98,8 +98,8 @@ const DocumentGenerator = () => {
           className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white dark:bg-secondarydarkbg rounded-lg shadow border-2"
         >
           {/* Title */}
-          <h1 className="pb-8 px-3 flex justify-center items-center flex-wrap text-cta dark:text-darkmodeCTA text-center text-2xl md:text-3xl font-medium ">
-            SmartSlide AI -{" "}
+          <h1 className="pb-8 px-3 gap-x-1 flex justify-center items-center flex-wrap text-cta dark:text-darkmodeCTA text-center text-2xl md:text-3xl font-medium ">
+            SmartSlide AI -
             <span className="text-nowrap">Create Documents in a Flash!</span>
           </h1>
           {/* Insert document topic */}
@@ -111,7 +111,7 @@ const DocumentGenerator = () => {
               type="text"
               value={topic}
               disabled={disabled}
-              className="border-2 bg-transparent h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
+              className="border-2 dark:border-white/50 bg-transparent h-10 flex-1 px-5 py-2 rounded-lg  disabled:bg-gray-200"
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Enter topic for the document"
             />

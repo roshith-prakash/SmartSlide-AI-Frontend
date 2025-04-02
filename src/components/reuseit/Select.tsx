@@ -47,7 +47,7 @@ const Select = ({
       onClick={() => setIsOpen((prev) => !prev)}
     >
       <div className="flex items-center justify-between gap-x-5">
-        <p>
+        <p className={`${!selected && "text-white/75"}`}>
           {selected
             ? options.find((opt) => opt.value === selected)?.text || selected
             : placeholder}

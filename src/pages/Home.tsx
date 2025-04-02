@@ -16,7 +16,7 @@ const Home = () => {
       <div data-aos="zoom-in" className="flex justify-center items-center">
         <img
           src="https://res.cloudinary.com/do8rpl9l4/image/upload/v1729153733/logo_bje77d.png"
-          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 dark:bg-opacity-100 rounded-full spin-slow"
+          className="p-1 w-60 border-cta border-4 pointer-events-none bg-white bg-opacity-50 dark:bg-darkbg rounded-full spin-slow"
         />
       </div>
       {/* Title */}

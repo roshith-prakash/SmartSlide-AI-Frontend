@@ -107,8 +107,8 @@ const PPTGenerator = () => {
           className="max-w-[95%] px-8 py-10 flex flex-col gap-y-5 bg-white dark:bg-secondarydarkbg rounded-lg shadow border-2 dark:border-darkmodetext/50"
         >
           {/* Title */}
-          <h1 className="pb-8 px-3 flex justify-center items-center flex-wrap text-cta dark:text-darkmodeCTA text-center text-2xl md:text-3xl font-medium ">
-            SmartSlide AI -{" "}
+          <h1 className="pb-8 px-3 flex gap-x-1 justify-center items-center flex-wrap text-cta dark:text-darkmodeCTA text-center text-2xl md:text-3xl font-medium ">
+            SmartSlide AI -
             <span className="text-nowrap">
               Create Presentations in a Flash!
             </span>
